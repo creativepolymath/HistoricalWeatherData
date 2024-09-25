@@ -6,3 +6,61 @@
 
 #print(monthly_data.columns)
 #print(yearly_data.columns)
+
+# Aggregate data by avg/month
+filtered_df['year_month'] = filtered_df['date'].dt.to_period('M')
+monthly_data = filtered_df.groupby(['year_month', 'station_id', 'city_name']).agg({
+    'avg_temp_c': 'mean',
+    'min_temp_c': 'mean',
+    'max_temp_c': 'mean',
+    'precipitation_mm': 'sum',  # Total precipitation per month
+    'avg_wind_speed_kmh': 'mean',  # Average wind speed per month
+    'peak_wind_gust_kmh': 'max'  # Maximum wind gust per month
+}).reset_index()
+
+# Aggregate data by year
+filtered_df['year'] = filtered_df['date'].dt.year
+yearly_data = filtered_df.groupby(['year', 'station_id', 'city_name']).agg({
+    'avg_temp_c': 'mean',
+    'min_temp_c': 'mean',
+    'max_temp_c': 'mean',
+    'precipitation_mm': 'sum',  # Total precipitation per year
+    'avg_wind_speed_kmh': 'mean',  # Average wind speed per year
+    'peak_wind_gust_kmh': 'max'  # Maximum wind gust per year
+}).reset_index()
+
+# Convert year_month back to datetime for better handling in Tableau
+monthly_data['year_month'] = monthly_data['year_month'].dt.to_timestamp()
+
+# Aggregate data by avg/month
+filtered_df['year_month'] = filtered_df['date'].dt.to_period('M')
+monthly_data = filtered_df.groupby(['year_month', 'station_id', 'city_name']).agg({
+    'avg_temp_c': 'mean',
+    'min_temp_c': 'mean',
+    'max_temp_c': 'mean',
+    'precipitation_mm': 'sum',  # Total precipitation per month
+    'avg_wind_speed_kmh': 'mean',  # Average wind speed per month
+    'peak_wind_gust_kmh': 'max'  # Maximum wind gust per month
+}).reset_index()
+
+# Aggregate data by year
+filtered_df['year'] = filtered_df['date'].dt.year
+yearly_data = filtered_df.groupby(['year', 'station_id', 'city_name']).agg({
+    'avg_temp_c': 'mean',
+    'min_temp_c': 'mean',
+    'max_temp_c': 'mean',
+    'precipitation_mm': 'sum',  # Total precipitation per year
+    'avg_wind_speed_kmh': 'mean',  # Average wind speed per year
+    'peak_wind_gust_kmh': 'max'  # Maximum wind gust per year
+}).reset_index()
+
+# Convert year_month back to datetime for better handling in Tableau
+monthly_data['year_month'] = monthly_data['year_month'].dt.to_timestamp()
+
+# Write the yearly data to a CSV file
+#yearly_data.to_csv('./output/yearly_data.csv', index=False)
+
+# Write the monthly data to a CSV file
+monthly_data.to_csv('./output/monthly_data.csv', index=False)
+
+print("Successful")
