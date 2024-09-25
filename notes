@@ -1,0 +1,8 @@
+# Get the minimum and maximum dates
+#min_date = daily_weather['date'].min()
+#max_date = daily_weather['date'].max()
+
+##print(f"Date range: {min_date} to {max_date}")
+
+#print(monthly_data.columns)
+#print(yearly_data.columns)
