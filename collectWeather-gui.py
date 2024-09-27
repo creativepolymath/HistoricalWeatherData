@@ -1,13 +1,22 @@
 # Simple Historic Weather Data Analytics Gui
+# https://creativepolymath.github.io/
+
 # Python with Kaggle API
 # pip install kaggle
 # needed libraries:
-# pip install pyarrow fastparquet
+# pip install tk pyarrow fastparquet
 # Data collected from:
 # kaggle datasets download -d guillemservera/global-daily-climate-data
 
+# FIRST RUN 'python collectWeather.py'
+# This makes the data less memory intensive
+# and I'm learning so it's the only way
+# I could make it work, for now.
+
+# setup Python environment
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
+
 import pandas as pd
 import os
 import traceback
@@ -30,7 +39,7 @@ def main():
             print("Failed to load data. Exiting.")
             return
 
-        # Run diagnostics
+        # Run diagnostics to view data types and column info
         #diagnose_data()
 
         # Create the main window
