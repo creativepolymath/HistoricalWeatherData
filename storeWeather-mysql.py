@@ -1,3 +1,5 @@
+#not functional at this time. sorting out the database/table connection
+
 import mysql.connector
 import pandas as pd
 

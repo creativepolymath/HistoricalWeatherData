@@ -1,5 +1,8 @@
 # Simple Historic Weather Data Analytics
 # Python with Kaggle API
+# pip install kaggle
+# needed libraries:
+# pip install pyarrow fastparquet
 # Data collected from:
 # kaggle datasets download -d guillemservera/global-daily-climate-data
 
